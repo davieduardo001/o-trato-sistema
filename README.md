@@ -5,18 +5,22 @@
 
 Trato é um sistema de acompanhamento de solicitações. Clientes e equipe entram pelo mesmo portal, cada um com o seu perfil, e todo pedido percorre quatro etapas visíveis: **Registro, Análise, Solução e Retorno**.
 
-Este repositório contém o protótipo da tela de **Login** (desktop 1240 × 800 e mobile 390 × 844), com:
+Este repositório contém o protótipo da tela de **Login**, uma página única e responsiva (tela dividida no desktop, hero + formulário empilhados no mobile), com:
 
 - seletor de perfil: **Sou cliente** / **Sou da equipe**
 - e-mail, senha, "Manter conectado" e "Esqueci a senha"
 - acesso alternativo para quem só quer acompanhar, usando o **nº de protocolo**
 
 ```
+index.html     # tela de login (página responsiva)
+styles.css     # estilos e breakpoint (860px)
+app.js         # arte em SVG desenhada conforme a tela + interações do formulário
+fonts/         # Schibsted Grotesk (woff2)
 assets/
-└── Trato - Login.html   # protótipo da tela de login (arquivo único, abre direto no navegador)
+└── Trato - Login.html   # protótipo original (dois artboards de tamanho fixo), mantido como referência de design
 ```
 
-Para ver o protótipo, abra `assets/Trato - Login.html` no navegador. Não há build nem dependências.
+Para ver a tela, sirva a pasta com qualquer servidor estático (por exemplo `python3 -m http.server`) e abra `index.html`. Não há build nem dependências.
 
 ---
 

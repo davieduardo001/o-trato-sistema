@@ -156,7 +156,8 @@
   pwToggle.addEventListener('click', function () {
     var show = pw.type === 'password';
     pw.type = show ? 'text' : 'password';
-    pwToggle.textContent = show ? 'Ocultar' : 'Mostrar';
+    pwToggle.setAttribute('aria-label', show ? 'Ocultar senha' : 'Mostrar senha');
+    pwToggle.firstElementChild.className = show ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
   });
 
   // protótipo: ainda não há autenticação

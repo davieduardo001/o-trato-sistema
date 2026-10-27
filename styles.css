@@ -161,19 +161,21 @@ input::placeholder { color: #8C8B88; }
 }
 .field input:focus { border-color: var(--ink); box-shadow: 0 0 0 4px var(--yellow-focus); }
 .field__pw { position: relative; display: flex; }
-.field__pw input { padding-right: 84px; }
+.field__pw input { padding-right: 52px; }
 .pw-toggle {
   position: absolute;
   right: 6px;
   top: 6px;
   height: 36px;
-  padding: 0 10px;
+  width: 40px;
+  padding: 0;
   border: none;
   background: transparent;
   color: var(--ink-soft);
-  font: 600 13px 'Schibsted Grotesk', sans-serif;
+  font-size: 16px;
   cursor: pointer;
 }
+.pw-toggle:hover { color: var(--ink); }
 
 .row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 14px; }
 .row a { font-weight: 600; }
@@ -195,10 +197,10 @@ input::placeholder { color: #8C8B88; }
   cursor: pointer;
 }
 .cta:hover { background: var(--yellow-hover); }
-.cta__arrow { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: var(--ink); color: var(--yellow); font-size: 18px; }
+.cta__arrow { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: var(--ink); color: var(--yellow); font-size: 15px; }
 
 .track { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0; font-size: 14px; color: var(--ink-soft); text-align: center; }
-.track svg { display: none; flex: none; }
+.track__icon { display: none; flex: none; width: 18px; text-align: center; color: var(--amber); }
 .track a { font-weight: 600; }
 
 /* ---------- tablet / desktop: tela dividida ---------- */
@@ -219,7 +221,7 @@ input::placeholder { color: #8C8B88; }
   .form__head h1 { font-size: 34px; }
   .form__head p { display: block; }
   .track { justify-content: flex-start; padding-top: 16px; border-top: 1px solid var(--line-soft); text-align: left; }
-  .track svg { display: block; }
+  .track__icon { display: block; }
 
   .status { display: inline-flex; }
   .hero { left: clamp(72px, 9vw, 120px); right: 48px; bottom: 56px; max-width: none; display: flex; flex-direction: column; gap: 16px; }

@@ -4,77 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#252422">
-  <title>Trato · Entrar</title>
+  <title>Trato · Service Desk</title>
   <link rel="preload" href="fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/login.css">
+  <link rel="stylesheet" href="styles/app.css">
+  <script>
+    // aplica tema e tamanho de texto salvos antes da primeira pintura (evita flash)
+    try {
+      var p = JSON.parse(localStorage.getItem('trato-a11y') || '{}');
+      if (['light', 'dark', 'hcb', 'hcw'].indexOf(p.theme) >= 0) document.documentElement.dataset.theme = p.theme;
+      var s = [0.875, 1, 1.125, 1.25, 1.375, 1.5][p.scaleIdx];
+      if (s) document.documentElement.style.fontSize = (14 * s) + 'px';
+    } catch (e) {}
+  </script>
 </head>
 <body>
-  <main class="page">
-
-    <section class="art" aria-label="Trato">
-      <svg class="art__svg" id="art" aria-hidden="true" focusable="false"></svg>
-
-      <a class="logo logo--light" href="#" aria-label="trato">
-        <svg width="26" height="26" viewBox="0 0 40 40" aria-hidden="true"><path d="M32.22 15.55A13 13 0 1 1 22.26 7.2" fill="none" stroke="#FABD07" stroke-width="6" stroke-linecap="round"/><circle cx="29.2" cy="9.2" r="3.6" fill="#FFFFFF"/></svg>
-        <span>trato</span>
-      </a>
-
-      <p class="status"><span class="status__dot"></span>Canal aberto 24 h, 7 dias</p>
-
-      <div class="hero">
-        <p class="hero__eyebrow">Registro · Análise · Solução · Retorno</p>
-        <h2 class="hero__title">Toda solicitação tem <span>retorno.</span></h2>
-      </div>
-    </section>
-
-    <section class="panel">
-      <form class="form" id="login" novalidate>
-        <a class="logo logo--dark" href="#" aria-label="trato">
-          <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><path d="M32.22 15.55A13 13 0 1 1 22.26 7.2" fill="none" stroke="#252422" stroke-width="6" stroke-linecap="round"/><circle cx="29.2" cy="9.2" r="3.6" fill="#FABD07"/></svg>
-          <span>trato</span>
-        </a>
-
-        <header class="form__head">
-          <h1>Bom te ver de novo.</h1>
-          <p>Entre para acompanhar e responder solicitações.</p>
-        </header>
-
-        <div class="seg" role="group" aria-label="Tipo de acesso">
-          <button type="button" class="seg__btn" data-profile="cliente" aria-pressed="true">Sou cliente</button>
-          <button type="button" class="seg__btn" data-profile="equipe" aria-pressed="false">Sou da equipe</button>
-        </div>
-
-        <div class="fields">
-          <label class="field">
-            <span>E-mail</span>
-            <input id="email" type="email" name="email" autocomplete="username" placeholder="voce@email.com" required>
-          </label>
-
-          <label class="field">
-            <span>Senha</span>
-            <span class="field__pw">
-              <input id="pw" type="password" name="password" autocomplete="current-password" placeholder="••••••••" required>
-              <button type="button" class="pw-toggle" id="pw-toggle" aria-controls="pw" aria-label="Mostrar senha"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
-            </span>
-          </label>
-
-          <div class="row">
-            <label class="check"><input type="checkbox" name="remember">Manter conectado</label>
-            <a href="#">Esqueci a senha</a>
-          </div>
-        </div>
-
-        <button type="submit" class="cta"><span id="cta-label">Entrar</span><span class="cta__arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span></button>
-
-        <p class="track">
-          <i class="fa-solid fa-magnifying-glass track__icon" aria-hidden="true"></i>
-          <span>Só quer acompanhar? <a href="#">Use o nº de protocolo</a></span>
-        </p>
-      </form>
-    </section>
-
-  </main>
-  <script src="app.js"></script>
+  <div id="root"></div>
+  <noscript>Este sistema precisa de JavaScript para funcionar.</noscript>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

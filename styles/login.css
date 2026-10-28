@@ -1,0 +1,110 @@
+/* ---------- tela de login: hero em cima e formulário embaixo; dividida a partir de 860px ---------- */
+
+.login {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--sf);
+}
+.login:focus { outline: none; }
+
+.login__art {
+  position: relative;
+  overflow: hidden;
+  background: var(--art);
+  height: clamp(280px, 38dvh, 380px);
+}
+.art__svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+.login__logo-light {
+  position: absolute;
+  top: max(1.6rem, env(safe-area-inset-top));
+  left: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--artTx);
+  text-decoration: none;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.login__hero { position: absolute; left: 1.6rem; bottom: 5.4rem; max-width: min(17rem, 60%); color: var(--artTx); }
+.login__eyebrow { display: none; margin: 0; }
+.login__hero h2 { font-size: 2.15rem; line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance; }
+.login__hero h2 span { color: var(--ring); }
+
+.login__panel {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0.6rem 1.6rem calc(2.6rem + env(safe-area-inset-bottom));
+  background: var(--sf);
+  margin-top: -1px; /* esconde a fresta de subpixel entre o hero e o formulário */
+  position: relative;
+}
+.login__form { width: 100%; max-width: 31.5rem; display: flex; flex-direction: column; gap: 1.3rem; }
+
+.brand { display: none; align-items: center; gap: 8px; }
+.brand__name { font-size: 2.3rem; font-weight: 700; letter-spacing: -0.045em; line-height: 1; }
+.tag { font-size: 0.8rem; font-weight: 600; border: var(--bdw) solid var(--bd); border-radius: 999px; padding: 2px 10px; background: var(--sf); color: var(--tx2); white-space: nowrap; }
+
+.login__head { display: flex; flex-direction: column; gap: 0.55rem; }
+.login__head h1 { font-size: 1.85rem; }
+.login__head p { display: none; font-size: 1.15rem; line-height: 1.5; color: var(--tx2); }
+
+.seg { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; background: var(--dis); border-radius: 10px; }
+.seg__btn { min-height: 2.9rem; border: var(--bdw) solid transparent; border-radius: 7px; background: transparent; color: var(--tx2); font-weight: 600; }
+.seg__btn[aria-pressed="true"] { background: var(--sf); color: var(--tx); box-shadow: 0 1px 3px rgba(37, 36, 34, 0.15); border-width: var(--bdw); border-color: var(--bd); }
+
+.fields { display: flex; flex-direction: column; gap: 1.15rem; }
+.field__pw { position: relative; display: flex; }
+.field__pw input { padding-right: 3.6rem; }
+.pw-toggle { position: absolute; right: 0.4rem; top: 50%; transform: translateY(-50%); width: 2.8rem; height: 2.8rem; border: none; border-radius: 8px; background: transparent; color: var(--tx2); font-size: 1.15rem; }
+.pw-toggle:hover { color: var(--tx); }
+
+.row { display: flex; justify-content: space-between; align-items: center; gap: 0.9rem; flex-wrap: wrap; }
+.row a { font-weight: 600; }
+.check { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.check input { width: 1.3rem; height: 1.3rem; margin: 0; accent-color: var(--tx); }
+
+.demo { display: flex; flex-direction: column; gap: 0.6rem; padding-top: 1.1rem; border-top: var(--bdw) solid var(--bd); font-size: 0.86rem; color: var(--tx2); }
+.demo__list { display: flex; flex-wrap: wrap; gap: 8px; }
+.demo__list button { min-height: 2.3rem; padding: 0 12px; border: var(--bdw) solid var(--bd); border-radius: 999px; background: var(--sf2); color: var(--tx); font-size: 0.86rem; }
+.demo__list button:hover { border-color: var(--tx); }
+
+@media (min-width: 860px) {
+  .login { grid-template-columns: minmax(30rem, 36%) 1fr; grid-template-rows: 1fr; }
+  .login__art { order: 2; height: auto; min-height: 100dvh; }
+  .login__panel { order: 1; align-items: center; padding: 3.4rem clamp(2.2rem, 5vw, 4.5rem); margin-top: 0; }
+  .login__form { gap: 1.7rem; }
+
+  .brand { display: flex; }
+  .login__logo-light { display: none; }
+  .login__head { margin-top: 0.8rem; }
+  .login__head h1 { font-size: 2.4rem; }
+  .login__head p { display: block; }
+
+  .login__hero { left: clamp(5rem, 9vw, 8.5rem); right: 3.4rem; bottom: 4rem; max-width: none; display: flex; flex-direction: column; gap: 1.1rem; }
+  .login__eyebrow { display: block; font-size: 0.93rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ring); }
+  .login__hero h2 { font-size: clamp(2.6rem, 4.6vw, 4.5rem); line-height: 1.02; letter-spacing: -0.035em; max-width: 14ch; }
+}
+
+@media (min-width: 860px) and (max-width: 1100px) {
+  .login__eyebrow { letter-spacing: 0.08em; font-size: 0.86rem; }
+}
+
+/* telas baixas no desktop: rola em vez de apertar o formulário */
+@media (min-width: 860px) and (max-height: 700px) {
+  .login__panel { align-items: flex-start; }
+}
+
+@media (max-width: 380px) {
+  .login__panel { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .login__logo-light, .login__hero { left: 1.2rem; }
+  .login__hero h2 { font-size: 1.85rem; }
+}

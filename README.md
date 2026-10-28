@@ -5,22 +5,29 @@
 
 Trato é um sistema de acompanhamento de solicitações. Clientes e equipe entram pelo mesmo portal, cada um com o seu perfil, e todo pedido percorre quatro etapas visíveis: **Registro, Análise, Solução e Retorno**.
 
-Este repositório contém o protótipo da tela de **Login**, uma página única e responsiva (tela dividida no desktop, hero + formulário empilhados no mobile), com:
+Este repositório contém o **Service Desk** do Trato: login, painel por perfil (cliente, atendente e Departamento de Atendimento), fila de chamados, tela de chamado com as ações de cada etapa, Base de Conhecimento, ajuda e painel de acessibilidade (4 temas, tamanho de texto e Libras). É responsivo, de tela cheia no desktop e com menu em gaveta no mobile.
 
-- seletor de perfil: **Sou cliente** / **Sou da equipe**
-- e-mail, senha, "Manter conectado" e "Esqueci a senha"
-- acesso alternativo para quem só quer acompanhar, usando o **nº de protocolo**
+É um app estático (Preact + htm, sem build). Chamados e Base de Conhecimento ficam no `localStorage` do navegador, então o fluxo inteiro funciona no GitHub Pages sem back-end. Para ver, sirva a pasta com qualquer servidor estático:
 
 ```
-index.html     # tela de login (página responsiva)
-styles.css     # estilos e breakpoint (860px)
-app.js         # arte em SVG desenhada conforme a tela + interações do formulário
-fonts/         # Schibsted Grotesk (woff2)
-assets/
-└── Trato - Login.html   # protótipo original (dois artboards de tamanho fixo), mantido como referência de design
+python3 -m http.server
 ```
 
-Para ver a tela, sirva a pasta com qualquer servidor estático (por exemplo `python3 -m http.server`) e abra `index.html`. Não há build nem dependências.
+Usuários de teste (qualquer senha): `marina` (cliente), `carla` (atendente), `rafael` (Depto. de Atendimento). No menu do perfil há "Restaurar dados de demonstração".
+
+```
+index.html          # entrada do app
+js/                 # main.js (rotas, tema, atalhos), store.js (estado + localStorage), data.js (dados de exemplo)
+  views/            # login, início, fila, chamado, nova solicitação, minhas solicitações, base, ajuda
+  components/       # shell (cabeçalho, menu, acessibilidade, avisos), arte do login, peças de UI
+styles/             # tokens dos 4 temas, base, login e app
+vendor/             # Preact + htm (autocontido)
+fonts/              # Schibsted Grotesk (woff2)
+docs/service-desk/  # inventário de telas, matriz de conformidade com o docx BPMN e capturas do protótipo
+assets/             # protótipos originais (login e Service Desk), mantidos como referência de design
+```
+
+O fluxo implementado é o do protótipo (processo AS-IS do docx de requisitos). A comparação com o TO-BE e as lacunas estão em [`docs/service-desk/conformidade.md`](docs/service-desk/conformidade.md).
 
 ---
 
